@@ -1,6 +1,5 @@
 package de.harald.verify;
 
-import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 import javax.enterprise.context.ApplicationScoped;
