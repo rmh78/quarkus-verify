@@ -1,0 +1,6 @@
+GET http://localhost:8080/hello/db HTTP/1.1
+
+###
+
+GET http://localhost:8080/hello/kafka HTTP/1.1
+
