@@ -2,7 +2,7 @@
 
 ## (1) Background 
 
-This Quarkus project uses docker-compose for setting up an integration-test environment which contains:
+This Quarkus project uses **docker-compose** for setting up an **integration-test environment** which contains:
 
 * Postgres DB
 * Kafka Broker
@@ -11,7 +11,7 @@ This Quarkus project uses docker-compose for setting up an integration-test envi
 
 I'm using Mavens integration-test and verify phase to run my integration-tests against the docker-compose environment. The test-classes are normal JUnit5 tests without the Quarkus annotations ``@QuarkusTest`` and ``@NativeImageTest``. 
 
-This mechanism addresses an integration-test szenario where all real components (postgres, kafka, etc.) and the application itself are in place for being tested from outside via REST calls. Without the need to deploy the whole stuff to your target cloud environment.
+This mechanism addresses an integration-test szenario where all real world components (postgres, kafka, etc. but no mocks or H2 dbs) and the application itself are in place for being tested from outside via REST calls. Without the need to deploy the whole stuff to your target cloud environment.
 
 For these integration-tests i have some additional Maven plugins in place:
 
@@ -19,6 +19,7 @@ For these integration-tests i have some additional Maven plugins in place:
 2. ``await-maven-plugin:Await`` - wait until the Quarkus health endpoint is UP
 3. ``maven-failsafe-plugin:integration-test`` - run all integration tests (*IT.java)
 4. ``docker-compose-maven-plugin:down`` - stop the integration-test environment
+5. ``maven-failsafe-plugin:verify`` - verify the test-results
 
 ## (2) run locally
 
@@ -47,3 +48,7 @@ mvn verfiy -Pnative
 ## (3) run on Jenkins
 
 ``mvn verify`` can be used at any buildpipeline too.
+
+## (4) other stuff
+
+* I'm using the shell-script ``wait-for-it.sh`` (https://github.com/jlordiales/wait-for-it) to wait with the Quarkus application start until all dependent services are up and running.
