@@ -25,25 +25,35 @@ For these integration-tests i have some additional Maven plugins in place:
 
 ### (2.1) run integration-tests in JVM mode
 
-```bash
-mvn verify
-```
+1. Change inside docker-compose.yml the ``dockerfile`` property of the app service to ``Dockerfile.jvm``
+
+2. Maven verfiy
+
+    ```bash
+    mvn verify
+    ```
 
 ### (2.2) run integration-tests in native mode
 
-```bash
-mvn verfiy -Pnative
-```
+1. Change inside docker-compose.yml the ``dockerfile`` property of the app service to ``Dockerfile.native``
+
+2. Maven verfiy
+
+    ```bash
+    mvn verfiy -Pnative
+    ```
 
 ### (2.3) run the integration-tests from vscode
 
-1. Build and start the environment
+1. Change inside docker-compose.yml the ``dockerfile`` property of the app service to ``Dockerfile.jvm``
+
+2. Build and start the environment
 
     ```bash
     mvn package && docker-compose up --build
     ```
 
-2. Use VSCode test-runner to run the tests against the environment
+3. Use VSCode test-runner to run the tests against the environment
 
 ## (3) run on Jenkins
 

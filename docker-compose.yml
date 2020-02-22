@@ -1,5 +1,6 @@
 version: '3'
 services:
+  # postgres database
   db:
     image: postgres
     restart: always
@@ -8,6 +9,7 @@ services:
     ports:
       - 5432:5432
 
+  # kafka zookeeper
   zookeeper:
     restart: always
     image: strimzi/kafka:0.16.2-kafka-2.4.0
@@ -20,6 +22,7 @@ services:
     environment:
       LOG_DIR: /tmp/logs
 
+  # kafka broker
   kafka:
     restart: always
     image: strimzi/kafka:0.16.2-kafka-2.4.0
@@ -38,6 +41,7 @@ services:
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
       KAFKA_NUM_PARTITIONS: 3
 
+  # quarkus application
   app:
     restart: always
     build:
