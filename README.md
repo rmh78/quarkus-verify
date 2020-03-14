@@ -25,7 +25,7 @@ For these integration-tests i have some additional Maven plugins in place:
 
 ### (2.1) run integration-tests in JVM mode
 
-1. Change inside docker-compose.yml the ``dockerfile`` property of the app service to ``Dockerfile.jvm``
+1. Change inside docker-compose.yml the ``dockerfile`` property of the app service to ``Dockerfile.jvm`` and use the jvm command
 
 2. Maven verfiy
 
@@ -35,12 +35,12 @@ For these integration-tests i have some additional Maven plugins in place:
 
 ### (2.2) run integration-tests in native mode
 
-1. Change inside docker-compose.yml the ``dockerfile`` property of the app service to ``Dockerfile.native``
+1. Change inside docker-compose.yml the ``dockerfile`` property of the app service to ``Dockerfile.native`` and use the native command
 
 2. Maven verfiy
 
     ```bash
-    mvn verfiy -Pnative
+    mvn verify -Pnative
     ```
 
 ### (2.3) run the integration-tests from vscode

@@ -50,5 +50,6 @@ services:
     ports:
       - 8080:8080
     # wait for database and kafka to be started before start the application
-    command: ["./wait-for-it.sh", "db:5432", "kafka:9092", "--", "./application", "-Dquarkus.http.host=0.0.0.0"]
+    #command: ["./wait-for-it.sh", "db:5432", "kafka:9092", "--", "./application", "-Dquarkus.http.host=0.0.0.0"]
+    command: ["/deployments/wait-for-it.sh", "db:5432", "kafka:9092", "--", "/deployments/run-java.sh"]
 
